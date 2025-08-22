@@ -6,6 +6,8 @@
   <title>My Portfolio</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     body {
       font-family: 'Poppins', sans-serif;
@@ -21,13 +23,20 @@
     /* Hero */
     .hero {
       height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)), 
-                  url("https://picsum.photos/1600/900") center/cover no-repeat;
+      background-size: cover;
+      background-position: center;
       color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
+      animation: changeBackground 15s infinite linear;
+    }
+    @keyframes changeBackground {
+      0%   { background-image: url("https://picsum.photos/id/1015/1600/900"); }
+      33%  { background-image: url("https://picsum.photos/id/1016/1600/900"); }
+      66%  { background-image: url("https://picsum.photos/id/1018/1600/900"); }
+      100% { background-image: url("https://picsum.photos/id/1015/1600/900"); }
     }
     .hero h1 {
       font-size: 3rem;
@@ -43,9 +52,16 @@
       font-weight: bold;
       font-size: 2rem;
     }
-    /* About */
+    /* About Section */
+    #about {
+      margin-top: 80px; /* space above about section */
+    }
     #about img {
       border-radius: 15px;
+    }
+    .about-text {
+      padding-right: 30px; /* space to the right of paragraph */
+      margin-top: 10px;    /* small gap from top image */
     }
     /* Skills */
     .skill-card {
@@ -58,12 +74,26 @@
     .project-card img {
       border-radius: 10px;
     }
+    /* Contact */
+    .hover-effect {
+      transition: transform 0.3s, background 0.3s;
+    }
+    .hover-effect:hover {
+      transform: translateY(-10px);
+      background: #343a40; /* darker shade */
+    }
+    #contact a {
+      text-decoration: none;
+      font-weight: 500;
+    }
     /* Footer */
     footer {
       background: #212529;
       color: white;
       padding: 20px 0;
       text-align: center;
+
+      
     }
   </style>
 </head>
@@ -95,105 +125,123 @@
     <a href="#contact" class="btn btn-warning mt-3">Hire Me</a>
   </div>
 </section>
-<!-- CSS -->
-<style>
-.hero {
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  animation: changeBackground 15s infinite linear;
-}
 
-@keyframes changeBackground {
-  0%   { background-image: url("https://picsum.photos/id/1015/1600/900"); }
-  33%  { background-image: url("https://picsum.photos/id/1016/1600/900"); }
-  66%  { background-image: url("https://picsum.photos/id/1018/1600/900"); }
-  100% { background-image: url("https://picsum.photos/id/1015/1600/900"); }
-}
-</style>
-
-<!-- About Me -->
-<section id="about" class="py-5 bg-light">
+<!-- About Section -->
+<section id="about" class="py-5">
   <div class="container">
-    <h2 class="section-title text-center mb-5">About Me</h2>
-    <div class="row align-items-center">
-      
-      <!-- Profile Picture -->
-      <div class="col-md-4 text-center">
-        <img src="C:\Users\Jyothi\Desktop\j Resume\Jyothi.jpg" alt="Jyothi N" 
-             class="img-fluid rounded-circle shadow-lg" 
-             style="width: 250px; height: 250px; object-fit: cover;">
+    <h2 class="section-title">About Me</h2>
+    <div class="row align-items-start"><!-- align-items-start added -->
+      <!-- Image Column -->
+      <div class="col-md-4 text-center mb-4 mb-md-0">
+        <img src="Jyothi.jpg" alt="Jyothi N"
+             class="img-fluid rounded-circle shadow-lg"
+             style="width: 250px; height: 300px; object-fit: cover;">
       </div>
-      
-      <!-- About Text -->
-      <div class="col-md-8">
+      <!-- Text Column -->
+      <div class="col-md-8 about-text">
         <h3 class="mb-3">I'm Jyothi N</h3>
         <p>
-          I’m a passionate <b>Java Full Stack Developer</b> with hands-on experience in 
-          <b>Java, Spring Boot, React.js, MySQL</b>, and more.  
-          I love building responsive web applications and solving real-world problems through technology.  
+          I’m a passionate <b>Java Developer</b> with hands-on experience in 
+          <b>Java, Spring MVC, MySQL</b>, and more. As a motivated 
+          Computer Science graduate with a strong foundation in full-stack development, 
+          I am eager to apply my skills to build innovative solutions, deliver value, 
+          and grow within a collaborative tech team.
         </p>
-        <p>
-          I enjoy continuous learning and keeping up with new technologies.  
-          My goal is to contribute to impactful projects that make a difference. 🚀
-        </p>
-        <a href="#contact" class="btn btn-warning mt-3">Let's Connect</a>
 
-         <!-- Resume Download -->
-<a href="JyothiN_msc_cs_2023_java.pdf" class="btn btn-dark mt-3" download>
-  <i class="fas fa-download"></i> Download Resume
-</a>
+        <a href="#contact" class="btn btn-warning mt-2 me-2">Let's Connect</a>
+        <a href="JyothiN_msc_cs_2023_java.pdf" class="btn btn-dark mt-2" download>
+          <i class="fas fa-download"></i> Download Resume
+        </a>
 
-      </div>
+        <!-- Buttons -->
+        <div class="mt-4">
+          <button class="btn btn-primary me-2 mb-2" onclick="showAboutContent('education')">Education</button>
+          <button class="btn btn-success me-2 mb-2" onclick="showAboutContent('experience')">Experience</button>
+          <button class="btn btn-info me-2 mb-2" onclick="showAboutContent('skills')">Skills</button>
+        </div>
 
-    </div>
-  </div>
-</section>
-
-
-<!-- Skills -->
-<section id="skills" class="py-5 bg-light">
-  <div class="container">
-    <h2 class="section-title">Skills</h2>
-    <div class="row text-center">
-      <div class="col-md-3 mb-4">
-        <div class="card skill-card p-3 shadow">
-          <h5>Java</h5>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="card skill-card p-3 shadow">
-          <h5>Java</h5>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="card skill-card p-3 shadow">
-          <h5>SpringBoot</h5>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="card skill-card p-3 shadow">
-          <h5>Javascript</h5>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="card skill-card p-3 shadow">
-          <h5>Html</h5>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="card skill-card p-3 shadow">
-          <h5>CSS</h5>
-        </div>
-      </div>
-      <div class="col-md-3 mb-4">
-        <div class="card skill-card p-3 shadow">
-          <h5>MYSQL</h5>
+        <!-- Dynamic content -->
+        <div id="about-content" class="p-3 mt-3 border rounded bg-white shadow-sm"
+             style="display: none; min-height: 180px; transition: all 0.3s ease;">
         </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- JS for dynamic content -->
+<script>
+function showAboutContent(section) {
+  const contentDiv = document.getElementById('about-content');
+  contentDiv.style.display = 'block';
+
+  if(section === 'education') {
+    contentDiv.innerHTML = `
+      
+      <ul>
+  <li>
+    <strong>Master of Science (Computer Science)</strong><br>
+ <strong  class="badge bg-primary me-1"> Bengaluru City University, Bengaluru<br></strong>
+    CGPA: 8.38
+  </li>
+  <li class="mt-2">
+    <strong>Bachelor of Science (EMCs)</strong><br>
+    <strong  class="badge bg-primary me-1">GFGC K R Puram, Bengaluru<br></strong>
+    CGPA: 8.82
+  </li>
+</ul>`;
+  } else if(section === 'experience') {
+    contentDiv.innerHTML = `
+      <h5>Experience</h5>
+      <ul>
+        <li>Internship at XYZ Company</li>
+        <li>Full Stack Project Work</li>
+      </ul>`;
+  }else if (section === 'skills') {
+    contentDiv.innerHTML = `
+      <h5>Skills</h5>
+      <ul class="list-unstyled">
+        <li class="mb-2">
+          <strong>Languages:</strong>
+          <span class="badge bg-primary me-1">JAVA</span>
+          <span class="badge bg-primary me-1">HTML</span>
+          <span class="badge bg-primary me-1">CSS</span>
+          <span class="badge bg-primary me-1">JAVASCRIPT</span>
+        </li>
+
+        <li class="mb-2">
+          <strong>Frameworks:</strong>
+          <span class="badge bg-success me-1">Spring Boot</span>
+          <span class="badge bg-success me-1">Spring MVC</span>
+          <span class="badge bg-success me-1">JPA (Hibernate)</span>
+        </li>
+
+        <li class="mb-2">
+          <strong>Database:</strong>
+          <span class="badge bg-warning text-dark">MySQL</span>
+        </li>
+
+        <li class="mb-2">
+          <strong>Tools:</strong>
+          <span class="badge bg-info text-dark">Postman</span>
+        </li>
+
+        <li class="mb-2">
+          <strong>Platforms:</strong>
+          <span class="badge bg-secondary me-1">VS Code</span>
+          <span class="badge bg-secondary me-1">Eclipse</span>
+          <span class="badge bg-secondary me-1">IntelliJ</span>
+        </li>
+
+        <li class="mb-2">
+          <strong>Version Control:</strong>
+          <span class="badge bg-dark">Git</span>
+        </li>
+      </ul>
+    `;
+}
+}
+</script>
 
 <!-- Projects -->
 <section id="projects" class="py-5">
@@ -202,10 +250,21 @@
     <div class="row">
       <div class="col-md-4 mb-4">
         <div class="card project-card shadow">
-          <img src="https://picsum.photos/400/250" class="card-img-top" alt="project">
+         
           <div class="card-body">
-            <h5 class="card-title">Project 1</h5>
-            <p class="card-text">Description of the project goes here.</p>
+            
+           <p class="card-text">
+  <strong class="badge bg-success me-3"><h4>Issue Management System</h4></strong>
+  <strong>Technologies:</strong> Java, Spring MVC, JPA, MySQL, CSS, HTML, JavaScript, Bootstrap.
+</p>
+<ul class="card-text">
+  <li>A Java Enterprise Web Application developed to help citizens raise and resolve complaints.</li>
+  <li>Provides a platform for users to report issues in their areas, cities, or homes.</li>
+  <li>Directs complaints to the respective departments for resolution.</li>
+  <li>Sends regular email updates to users about their complaint status.</li>
+  <li>Simplifies issue resolution by enabling easy complaint registration.</li>
+</ul>
+ <a href="https://github.com/Jyothin2001/issue-management" target="_blank" class="btn btn-primary mt-2">View Project</a>
           </div>
         </div>
       </div>
@@ -218,22 +277,8 @@
           </div>
         </div>
       </div>
-      <div class="col-md-4 mb-4">
-        <div class="card project-card shadow">
-          <img src="https://picsum.photos/400/250" class="card-img-top" alt="project">
-          <div class="card-body">
-            <h5 class="card-title">Project 3</h5>
-            <p class="card-text">Description of the project goes here.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      
 </section>
-
-<!--contact-->
-<!-- Font Awesome for icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <!-- Contact -->
 <section id="contact" class="py-5 bg-dark text-white">
@@ -242,7 +287,6 @@
     <p class="mb-5">I'd love to connect with you! Choose your preferred way:</p>
     
     <div class="row g-4 justify-content-center">
-      
       <!-- Email -->
       <div class="col-md-3">
         <div class="contact-box p-4 shadow-lg rounded-4 h-100 bg-secondary text-white hover-effect">
@@ -251,7 +295,6 @@
           <a href="mailto:jyothin7981@example.com" class="text-white">jyothin7981@example.com</a>
         </div>
       </div>
-
       <!-- Phone -->
       <div class="col-md-3">
         <div class="contact-box p-4 shadow-lg rounded-4 h-100 bg-secondary text-white hover-effect">
@@ -260,7 +303,6 @@
           <a href="tel:+919742607981" class="text-white">+91 9742607981</a>
         </div>
       </div>
-
       <!-- LinkedIn -->
       <div class="col-md-3">
         <div class="contact-box p-4 shadow-lg rounded-4 h-100 bg-secondary text-white hover-effect">
@@ -269,7 +311,6 @@
           <a href="https://www.linkedin.com/in/jyothi-n-6b1797320" target="_blank" class="text-white">View Profile</a>
         </div>
       </div>
-
       <!-- GitHub -->
       <div class="col-md-3">
         <div class="contact-box p-4 shadow-lg rounded-4 h-100 bg-secondary text-white hover-effect">
@@ -278,28 +319,9 @@
           <a href="https://github.com/Jyothin2001" target="_blank" class="text-white">github.com/Jyothin2001</a>
         </div>
       </div>
-
     </div>
   </div>
 </section>
-
-<!-- Extra CSS -->
-<style>
-  .hover-effect {
-    transition: transform 0.3s, background 0.3s;
-  }
-  .hover-effect:hover {
-    transform: translateY(-10px);
-    background: #343a40; /* darker shade */
-  }
-  #contact a {
-    text-decoration: none;
-    font-weight: 500;
-  }
-</style>
-
-
-
 
 <!-- Footer -->
 <footer>
