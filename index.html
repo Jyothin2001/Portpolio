@@ -139,8 +139,12 @@
       padding: 20px 0;
       text-align: center;
 
-
     }
+    .big-badge {
+  font-size: 0.95rem;    /* increase text size */
+  padding: 0.6em 0.9em; /* increase padding */
+}
+
   </style>
 </head>
 
@@ -232,88 +236,68 @@
 
       if (section === 'education') {
         contentDiv.innerHTML = `
-      
+      <h5><b>Education</b></h5>
       <ul>
   <li>
-    <strong>Master of Science (Computer Science)</strong><br>
- <strong  class="badge bg-primary me-1"> Bengaluru City University, Bengaluru<br></strong>
-    CGPA: 8.38
-  </li>
-  <li class="mt-2">
-    <strong>Bachelor of Science (EMCs)</strong><br>
-    <strong  class="badge bg-primary me-1">GFGC K R Puram, Bengaluru<br></strong>
-    CGPA: 8.82
-  </li>
+  <strong style="font-size:1.1rem;">Master of Science (Computer Science)</strong><br>
+  <span  >Bengaluru City University, Bengaluru</span><br>
+  <span style="font-size:1.1rem;">CGPA: 8.38</span>
+</li>
+
+<li class="mt-2">
+  <strong style="font-size:1.1rem;">Bachelor of Science (EMCs)</strong><br>
+  <span >GFGC K R Puram, Bengaluru</span><br>
+  <span style="font-size:1.1rem;">CGPA: 8.82</span>
+</li>
+
 </ul>`;
       } else if (section === 'experience') {
         contentDiv.innerHTML = `
-      <h5>Experience</h5>
+      <h5><b>Experience</b></h5>
       <ul>
-        <li>Internship at XYZ Company</li>
-        <li>Full Stack Project Work</li>
+        <li>Java Full Stack Development Training at Xworkz, BTM – Hands-on projects in Java, Spring MVC, MYSQL and Spring Boot.</li>
+        <li>Practical experience through Java Full Stack course: backend, frontend, database</li>
       </ul>`;
       } else if (section === 'skills') {
         contentDiv.innerHTML = `
-      <h5>Skills</h5>
-      <ul class="list-unstyled">
-        <li class="mb-2">
-          <strong>Languages:</strong>
-          <span class="badge bg-primary me-1">JAVA</span>
-          <span class="badge bg-primary me-1">HTML</span>
-          <span class="badge bg-primary me-1">CSS</span>
-          <span class="badge bg-primary me-1">JAVASCRIPT</span>
-        </li>
-
-        <li class="mb-2">
-          <strong>Frameworks:</strong>
-          <span class="badge bg-success me-1">Spring Boot</span>
-          <span class="badge bg-success me-1">Spring MVC</span>
-          <span class="badge bg-success me-1">JPA (Hibernate)</span>
-        </li>
-        <li class="mb-2">
-          <strong>Platforms:</strong>
-          <span class="badge bg-info text-dark">Liferay DXP</span>
-        </li>
-        <li class="mb-2">
-          <strong>Database:</strong>
-          <span class="badge bg-warning text-dark">MySQL</span>
-        </li>
-
-        <li class="mb-2">
-          <strong>Tools:</strong>
-          <span class="badge bg-info text-dark">Postman</span>
-        </li>
-
-        <li class="mb-2">
-          <strong>Platforms:</strong>
-          <span class="badge bg-secondary me-1">VS Code</span>
-          <span class="badge bg-secondary me-1">Eclipse</span>
-          <span class="badge bg-secondary me-1">IntelliJ</span>
-        </li>
-
-        <li class="mb-2">
-          <strong>Version Control:</strong>
-          <span class="badge bg-dark">Git</span>
-        </li>
-      </ul>
+      <h5><b>Skills</b></h5>
+      <div class="row">
+        <div class="col-md-6">
+          <ul>
+            <li><strong>Languages:</strong> JAVA, HTML, CSS, JavaScript</li>
+            <li><strong>Frameworks:</strong> Spring Boot, Spring MVC, JPA (Hibernate)</li>
+            <li><strong>Database:</strong> MySQL</li>
+            <li><strong>Tools:</strong> Postman</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul>
+            <li><strong>Platforms:</strong> Liferay DXP</li>
+            <li><strong>IDE:</strong> VS Code, Eclipse, IntelliJ</li>
+            <li><strong>Version Control:</strong> Git</li>
+            <li><strong>Other Skills:</strong> REST API, HTML/CSS design</li>
+          </ul>
+        </div>
+      </div>
     `;
       }
     }
   </script>
-<!-- Projects -->
 <section id="projects" class="py-5">
   <div class="container">
-    <h2 class="section-title mb-4">Projects</h2>
-    <div class="row">
-      <div class="col-md-4 mb-4">
+    <h2 class="section-title mb-4 text-center">Projects</h2>
+    <div class="row justify-content-center"> <!-- Center the card -->
+      <div class="col-md-6 mb-4"> <!-- Make it medium size and centered -->
         <div class="card project-card shadow h-100">
           <div class="card-body">
 
             <!-- Project Title -->
-            <h4 class="card-title mb-3 text-success">Issue Management System</h4>
+            <h4 class="card-title mb-3 text-success text-center">
+              <b>Issue Management System</b>
+            </h4>
 
             <!-- Technologies -->
-            <p class="card-text">
+            <p class="card-text text-center">
               <strong>Technologies:</strong> Java, Spring MVC, JPA, MySQL, CSS, HTML, JavaScript, Bootstrap
             </p>
 
@@ -327,8 +311,10 @@
             </ul>
 
             <!-- GitHub Link -->
-            <a href="https://github.com/Jyothin2001/issue-management" target="_blank"
-              class="btn btn-primary mt-2">View Project</a>
+            <div class="text-center">
+              <a href="https://github.com/Jyothin2001/issue-management" target="_blank"
+                class="btn btn-primary mt-2">View Project</a>
+            </div>
 
           </div>
         </div>
@@ -353,7 +339,7 @@
               <i class="fas fa-envelope fa-lg text-warning"></i>
             </div>
             <h6>Email</h6>
-            <a href="mailto:jyothin7981@example.com" class="text-white small d-block">jyothin7981@example.com</a>
+            <a href="mailto:jyothin7981@example.com" class="text-white small d-block">jyothin7981@gmail.com</a>
           </div>
         </div>
 
